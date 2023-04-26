@@ -1,3 +1,3 @@
-git+https://github.com/nomic-ai/nomic
+transformers
 gunicorn
-Flask==2.0.2
+
