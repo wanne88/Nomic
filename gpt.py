@@ -1,16 +1,6 @@
-from flask import Flask, request, jsonify
-from nomic.gpt4all import GPT4All
-
-app = Flask(__name__)
-m = GPT4All()
-m.open()
-
-@app.route("/", methods=["POST"])
-def predict():
-    data = request.get_json(force=True)
-    question = data["question"]
-    answer = m.prompt(question)
-    return jsonify(answer=answer)
-
-if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0")
+from transformers import GPT2Tokenizer, GPT2Model
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+model = GPT2Model.from_pretrained('gpt2')
+text = "Replace me by any text you'd like."
+encoded_input = tokenizer(text, return_tensors='pt')
+output = model(**encoded_input)
