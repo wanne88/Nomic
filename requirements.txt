@@ -1,3 +1,4 @@
 transformers
 gunicorn
 Flask
+torch
